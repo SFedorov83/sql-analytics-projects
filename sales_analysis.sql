@@ -29,9 +29,11 @@ INSERT INTO orders (customer_id, amount, order_date) VALUES
 -- Analysis: Total spending by customer
 
 SELECT 
+    c.id,
     c.name,
     SUM(o.amount) AS total_spent
 FROM customers c
 JOIN orders o ON c.id = o.customer_id
-GROUP BY c.name
+GROUP BY c.id, c.name
 ORDER BY total_spent DESC;
+
